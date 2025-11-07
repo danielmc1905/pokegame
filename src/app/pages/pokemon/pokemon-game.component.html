@@ -1,0 +1,20 @@
+<section class="game">
+    <h1>¿Quién es este pokémon?</h1>
+
+    <div class="image-container">
+        <img [src]="pokemonImage" [class.revealed]="showPokemon" alt="pokemon silhouette" />
+    </div>
+
+    <div class="options">
+        <button *ngFor="let option of options" (click)="checkAnswer(option)" [disabled]="showPokemon">
+            {{ option }}
+        </button>
+    </div>
+
+    <div class="result" *ngIf="showPokemon">
+        <p [class.correct]="isCorrect" [class.wrong]="!isCorrect">
+            {{ isCorrect ? '¡Correcto!' : 'Ups, era ' + correctAnswer + '!' }}
+        </p>
+        <button class="next" (click)="nextPokemon()">Siguiente</button>
+    </div>
+</section>
